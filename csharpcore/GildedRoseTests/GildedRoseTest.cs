@@ -187,5 +187,18 @@ namespace GildedRoseTests
             var expectedQuality = initialQuality-2;
             Assert.Equal(expectedQuality, Items[0].Quality);
         }
+        
+        [Fact]
+        public void BackstagePassesToASulfurasConcertShouldBeTreatedAsBackstagePasses()
+        {
+            var initialName = "Backstage passes to a Sulfuras concert";
+            var initialSellIn = 333;
+            var initialQuality = 42;
+            IList<Item> Items = new List<Item> { new Item { Name = initialName, SellIn = initialSellIn, Quality = initialQuality } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            var expectedQuality = initialQuality+1;
+            Assert.Equal(expectedQuality, Items[0].Quality);
+        }
     }
 }

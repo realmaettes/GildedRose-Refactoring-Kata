@@ -10,22 +10,22 @@ public static class ItemExtensions
     
     private static ItemType GetItemType(this Item item)
     {
-        if (item.Name.Contains("Sulfuras"))
+        if (item.Name.StartsWith("Sulfuras"))
         {
             return ItemType.Sulfuras;
         }
         
-        if (item.Name.Contains("Backstage passes"))
+        if (item.Name.StartsWith("Backstage passes"))
         {
             return ItemType.BackstagePasses;
         }
         
-        if (item.Name.Equals("Aged Brie"))
+        if (item.Name.StartsWith("Aged Brie"))
         {
             return ItemType.AgedBrie;
         }
 
-        return item.Name.Contains("Conjured") ? ItemType.Conjured : ItemType.Default;
+        return item.Name.StartsWith("Conjured") ? ItemType.Conjured : ItemType.Default;
     }
     
     private static int GetQualityChange(this Item item)
